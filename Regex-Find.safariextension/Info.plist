@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Author</key>
+	<string>Joseph Simonian</string>
+	<key>Builder Version</key>
+	<string>11601.1.41</string>
+	<key>CFBundleDisplayName</key>
+	<string>Regex-Find</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.jsimonian.regex-find</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0</string>
+	<key>CFBundleVersion</key>
+	<string>1.0</string>
+	<key>Chrome</key>
+	<dict>
+		<key>Global Page</key>
+		<string>global.html</string>
+		<key>Toolbar Items</key>
+		<array>
+			<dict>
+				<key>Command</key>
+				<string>regex-find</string>
+				<key>Identifier</key>
+				<string>Regex-Find</string>
+				<key>Image</key>
+				<string>Icon.png</string>
+				<key>Include By Default</key>
+				<true/>
+				<key>Label</key>
+				<string>Regex-Find</string>
+			</dict>
+		</array>
+	</dict>
+	<key>Description</key>
+	<string>Implements ⌘-F with Regular Expressions</string>
+	<key>DeveloperIdentifier</key>
+	<string>0000000000</string>
+	<key>ExtensionInfoDictionaryVersion</key>
+	<string>1.0</string>
+	<key>Website</key>
+	<string>https://github.com/jsimonian/Regex-Find</string>
+</dict>
+</plist>

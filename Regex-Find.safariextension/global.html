@@ -1,0 +1,13 @@
+<script>
+// Set up the Listener
+safari.application.addEventListener("command", performCommand, false);
+
+// Function to perform when event is received
+function performCommand(event) {
+    // Make sure event comes from the button
+    if (event.command == "regex-find") {
+        var newTab = safari.application.activeBrowserWindow.openTab(); // Open a new tab
+        newTab.url = "http://joseph.simonian.me"; // Set tab URL to github
+    }
+}
+</script>
