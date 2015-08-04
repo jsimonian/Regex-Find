@@ -36,12 +36,33 @@
 			</dict>
 		</array>
 	</dict>
+	<key>Content</key>
+	<dict>
+		<key>Scripts</key>
+		<dict>
+			<key>End</key>
+			<array>
+				<string>search.js</string>
+				<string>keyboardShortcutHandler.js</string>
+			</array>
+		</dict>
+	</dict>
 	<key>Description</key>
 	<string>Implements ⌘-F with Regular Expressions</string>
 	<key>DeveloperIdentifier</key>
 	<string>0000000000</string>
 	<key>ExtensionInfoDictionaryVersion</key>
 	<string>1.0</string>
+	<key>Permissions</key>
+	<dict>
+		<key>Website Access</key>
+		<dict>
+			<key>Include Secure Pages</key>
+			<true/>
+			<key>Level</key>
+			<string>All</string>
+		</dict>
+	</dict>
 	<key>Website</key>
 	<string>https://github.com/jsimonian/Regex-Find</string>
 </dict>
