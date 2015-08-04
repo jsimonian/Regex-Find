@@ -15,7 +15,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>0.1.2</string>
 	<key>CFBundleVersion</key>
-	<string>0.1.1</string>
+	<string>0.1.2</string>
 	<key>Chrome</key>
 	<dict>
 		<key>Global Page</key>
@@ -32,7 +32,7 @@
 				<key>Include By Default</key>
 				<true/>
 				<key>Label</key>
-				<string>regex-find</string>
+				<string>Regex-Find</string>
 			</dict>
 		</array>
 	</dict>

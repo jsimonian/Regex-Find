@@ -1,5 +1,9 @@
 <script>
 
+// State information
+var index = 1;
+var positions = [];
+
 safari.application.addEventListener("command", performCommand, false);
 
 function performCommand(event) {
@@ -11,10 +15,22 @@ function performCommand(event) {
 // Listens to message from injected keyboardShortcutHandler.js
 safari.application.addEventListener('message', handleKeyboardMessage, false);
 
-// Message gets caught, reopenClosedTabs() gets called
+// Message gets caught, methods of search.js get called
 function handleKeyboardMessage(e) {
-    if (e.name == 'regex-find') {
+    if (e.name == 'search') {
         safari.application.activeBrowserWindow.activeTab.page.dispatchMessage("search", null);
+    }
+    if (e.name == 'next') {
+        next = positions[index];
+        index++;
+        if (index == positions.length) {
+            index = 0;
+        }
+        safari.application.activeBrowserWindow.activeTab.page.dispatchMessage("next", next);
+    }
+    if (e.name == 'set-state') {
+        positions = e.message;
+        index = 1;
     }
 
 }
