@@ -16,11 +16,20 @@ function handleMessage(event) {
             match = reg.exec(text);
         }
 
+        window.find(matches[0]);
+        var horizontal = document.body.scrollLeft;
+        var vertical = document.body.scrollTop;
+        // Locates the first position text to be highlighted
+        // In the future I'll want to store all positions in an array of arrays
+
         for (m of matches.uniques()) {
             if (m != undefined) {
                 highlight(m);
             }
         }
+
+        window.scrollTo(horizontal, vertical);
+        // Set scroll position to first position text
 
     }
 }
