@@ -32,7 +32,7 @@
 				<key>Include By Default</key>
 				<true/>
 				<key>Label</key>
-				<string>Regex-Find</string>
+				<string>regex-find</string>
 			</dict>
 		</array>
 	</dict>
