@@ -1,7 +1,7 @@
 <script>
 
 // State information
-var index = 1;
+var index = 0;
 var positions = [];
 
 safari.application.addEventListener("command", performCommand, false);
@@ -21,18 +21,27 @@ function handleKeyboardMessage(e) {
         safari.application.activeBrowserWindow.activeTab.page.dispatchMessage("search", null);
     }
     if (e.name == 'next') {
-        next = positions[index];
-        index++;
-        if (index == positions.length) {
-            index = 0;
-        }
-        safari.application.activeBrowserWindow.activeTab.page.dispatchMessage("next", next);
+        moveToNext();
     }
     if (e.name == 'set-state') {
         positions = e.message;
-        index = 1;
+        index = 0;
+        moveToNext();
     }
 
 }
 
+function moveToNext() {
+    next = positions[index];
+    index++;
+    if (index == positions.length) {
+        index = 0;
+    }
+    safari.application.activeBrowserWindow.activeTab.page.dispatchMessage(
+        "next", next);
+}
+
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js">
 </script>

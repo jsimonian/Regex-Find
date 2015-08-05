@@ -5,20 +5,18 @@ safari.self.addEventListener("message", handleMessage, false);
 function handleMessage(event) {
 
     if (event.name == "search") {
-
         var input = prompt("Enter your search term");
         var reg = new RegExp(input, "g"); // Force to global
-        var matches = document.body.innerHTML.match(reg).uniques();
+        var text = document.body.innerText;
+        var matches = text.match(reg).uniques();
         var positions = [];
 
         for (m of matches) {
             if (m != undefined) {
-                highlight(m, positions);
+                highlight(m, positions, text);
             }
         }
-        positions.sort(function(a, b){return a[3]-b[3]});
-        blink(positions[0][0], positions[0][1], positions[0][2], positions[0][3]);
-
+        positions.sort(function(a, b){return a[4]-b[4]});
         safari.self.tab.dispatchMessage('set-state', positions);
     }
 
@@ -28,13 +26,15 @@ function handleMessage(event) {
 
 }
 
-function highlight(text, pos) {
+function highlight(text, pos, all) {
     if (window.find && window.getSelection) {
         var sel = window.getSelection();
         sel.collapse(document.body, 0);
         var wordIndex = 0;
+        var searchIndex = 0;
         while (window.find(text)) {
-            pos.push([text, wordIndex, document.body.scrollLeft, document.body.scrollTop]);
+            pos.push([text, wordIndex, document.body.scrollLeft, document.body.scrollTop, all.indexOf(text, searchIndex)]);
+            searchIndex = all.indexOf(text, searchIndex) + 1;
             wordIndex++;
             document.designMode = "on";
             document.execCommand("hiliteColor", false, "yellow");
@@ -52,7 +52,9 @@ function blink(text, wordIndex, left, top) {
         while (window.find(text)) {
             if (seen == wordIndex) {
                 document.designMode = "on";
-                document.execCommand("bold", false, null);
+                $( document ).click(function() {
+                    window.getSelection().toggle( "highlight" );
+                });
                 document.designMode = "off";
             }
             sel.collapseToEnd();
