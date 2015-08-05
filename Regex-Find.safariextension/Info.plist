@@ -24,7 +24,7 @@
 		<array>
 			<dict>
 				<key>Command</key>
-				<string>regex-find</string>
+				<string>null</string>
 				<key>Identifier</key>
 				<string>Regex-Find</string>
 				<key>Image</key>

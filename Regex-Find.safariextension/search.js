@@ -4,7 +4,7 @@ safari.self.addEventListener("message", handleMessage, false);
 
 function handleMessage(event) {
 
-    if (event.name == "search") {
+    if (event.name == "search" && window.top == window) {
         var input = prompt("Enter your search term");
         var reg = new RegExp(input, "g"); // Force to global
         var text = document.body.innerText;
@@ -20,7 +20,7 @@ function handleMessage(event) {
         safari.self.tab.dispatchMessage('set-state', positions);
     }
 
-    if (event.name == "next") {
+    if (event.name == "next" && window.top == window) {
         blink(event.message[0], event.message[1], event.message[2], event.message[3]);
     }
 
@@ -37,7 +37,7 @@ function highlight(text, pos, all) {
             searchIndex = all.indexOf(text, searchIndex) + 1;
             wordIndex++;
             document.designMode = "on";
-            document.execCommand("hiliteColor", false, "yellow");
+            document.execCommand("hiliteColor", false, "grey");
             document.designMode = "off";
             sel.collapseToEnd();
         }
@@ -52,12 +52,10 @@ function blink(text, wordIndex, left, top) {
         while (window.find(text)) {
             if (seen == wordIndex) {
                 document.designMode = "on";
-                $( document ).click(function() {
-                    window.getSelection().toggle( "highlight" );
-                });
+                document.execCommand("hiliteColor", false, "yellow");
                 document.designMode = "off";
+                sel.collapseToEnd();
             }
-            sel.collapseToEnd();
             seen++;
         }
         window.scrollTo(left, top);
